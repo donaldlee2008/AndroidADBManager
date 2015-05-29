@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_corners"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <ImageButton
+        android:src="@drawable/play"
+        android:id="@+id/notification_image"
+        android:layout_width="62dip"
+        android:layout_height="62dip"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/adb"
+        android:hapticFeedbackEnabled="true"
+        android:scaleType="fitCenter"
+        android:soundEffectsEnabled="true" />
+
+    <TextView
+        android:id="@+id/notification_title"
+        style="@style/NotificationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dip"
+        android:layout_toRightOf="@id/notification_image"
+        android:scrollHorizontally="true"
+        android:text="@string/status_adb_service_not_running"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/notification_text"
+        style="@style/NotificationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notification_title"
+        android:layout_toRightOf="@id/notification_image"
+        android:scrollHorizontally="true"
+        android:text="@string/status_no_wifi_connection"
+        android:textSize="16sp" />
+
+</RelativeLayout>
