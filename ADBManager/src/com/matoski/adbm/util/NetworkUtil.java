@@ -87,8 +87,8 @@ public class NetworkUtil {
 					switch (mode) {
 					case ipv4:
 						if (!inetAddress.isLoopbackAddress()
-								&& InetAddressUtils.isIPv4Address(inetAddress
-										.getHostAddress())) {
+								&& InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())
+								&& intf.getName().toLowerCase().startsWith("wlan")) {
 							return inetAddress.getHostAddress().toString();
 						}
 						break;
