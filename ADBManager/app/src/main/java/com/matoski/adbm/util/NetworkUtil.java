@@ -51,8 +51,6 @@ public class NetworkUtil {
      * Gets the local network address based on mode
      *
      * @param mode  What IP address to retrieve, from {@link IPMode}
-     * @param retry How many times to retry if we get NULL, use this as a
-     *              workaround on older systems
      * @return The IP address, or <code>null</code> if not found
      */
     public static String getLocalIPAddress(IPMode mode) {
@@ -81,7 +79,7 @@ public class NetworkUtil {
                             if (!inetAddress.isLoopbackAddress()
                                     && InetAddressUtilsHC4.isIPv4Address(inetAddress.getHostAddress())
                                     && intf.getName().toLowerCase().startsWith("wlan")) {
-                                return inetAddress.getHostAddress().toString();
+                                return inetAddress.getHostAddress();
                             }
                             break;
                         case ipv6:
@@ -91,7 +89,7 @@ public class NetworkUtil {
                                     || InetAddressUtilsHC4
                                     .isIPv6HexCompressedAddress(address) || InetAddressUtilsHC4
                                     .isIPv6StdAddress(address))) {
-                                return inetAddress.getHostAddress().toString();
+                                return inetAddress.getHostAddress();
                             }
                             break;
 
@@ -99,10 +97,9 @@ public class NetworkUtil {
                 }
             }
         } catch (SocketException ex) {
-            Log.e("Socket exception in GetIP Address of Utilities",
-                    ex.toString());
+            Log.e("GetIP", ex.toString());
         } catch (Exception e) {
-            Log.e("Exception in GetIP Address of Utilities", e.toString());
+            Log.e("GetIP", e.toString());
             return getLocalIPAddress(mode, --retry);
         }
 
